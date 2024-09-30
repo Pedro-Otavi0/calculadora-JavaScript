@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background-image: linear-gradient(45deg, green, blue);
+            height: 100vi;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .Calculadora{
+            position: absolute;
+            background-color: gray;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            padding: 10px;
+
+
+        }
+        .botao{
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      margin:1px;
+      background-color: gray;
+      border-radius: 10px;
+      border-width: 7px;
+      color: white;
+        }
+        .botao:hover{
+            background-color: rgb(68,68,70);
+
+        }
+        #resultado{
+            background-color: rgba(71, 183, 71, 0.6);
+            width: 207px;
+            height: 35px;
+            margin: 5px;
+            font-size: 25px;
+            border-style: outset;
+            border-color: black;
+            border-width: 5px;
+            color: black;
+            text-align: right;
+            
+        }
+    </style>
+   
+    
+</head>
+<body>
+    <div class="fundo">
+        <div class="Calculadora">
+            <h1>Calculadora</h1>
+            <p id="resultado">0</p>
+            <table>
+                <tr>
+                    <td><button class="botao" onclick="apagar()">C</button></td>
+                    <td><button class="botao" onclick="deleta()"><</button></td>
+                    <td><button class="botao" onclick="inserir('/')">/</button></td>
+                    <td><button class="botao" onclick="inserir('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="inserir('7')">7</button></td>
+                    <td><button class="botao" onclick="inserir('8')">8</button></td>
+                    <td><button class="botao" onclick="inserir('9')">9</button></td>
+                    <td><button class="botao" onclick="inserir('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="inserir('4')">4</button></td>
+                    <td><button class="botao" onclick="inserir('5')">5</button></td>
+                    <td><button class="botao" onclick="inserir('6')">6</button></td>
+                    <td><button class="botao" onclick="inserir('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="inserir('1')">1</button></td>
+                    <td><button class="botao" onclick="inserir('2')">2</button></td>
+                    <td><button class="botao" onclick="inserir('3')">3</button></td>
+                    <td rowspan="2"><button onclick="calcular()" class="botao" style="height: 106px;">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2" ><button class="botao" onclick="inserir('0')"style="width: 106px;">0</button></td>
+                    <td><button class="botao" onclick="inserir('.')" >,</button></td>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        let resultado = document.getElementById('resultado')
+        datares = ''
+        function inserir(num){
+          datares += num
+          resultado.innerHTML += num
+          console.log(datares)
+        }
+        function calcular(){
+            eval(datares)
+            let r = eval(datares)
+            document.getElementById("resultado").innerHTML = eval(datares)
+            datares = ''
+            datares = r
+        }
+        function apagar(){
+            datares = ""
+            document.getElementById("resultado").innerHTML = ''
+        }
+        function deleta(){
+            let c = datares=datares.slice(0, -1)
+            document.getElementById("resultado").innerHTML = c
+        }
+
+    </script>
+    
+</body>
+</html>
